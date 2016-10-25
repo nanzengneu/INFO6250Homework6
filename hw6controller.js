@@ -25,13 +25,14 @@ angMod.controller('signupCtrl', function ($scope, $http, $cookieStore) {
             $http.get("app.php?cmd=set&key="+key+"&value="+ value)
             .success(function ( ) {
                 $scope.redisResponse = "Updated.";
+		location.href = "hw6signinpage.html";
             });
             
         });
         
-	    location.href = "hw6signinpage.html";
+	    
     }
-
+	/*signin function*/
 	$scope.signin = function() {
            $http.get("app.php?cmd=get&key=username")
 	     	.success(function (data_username) {
