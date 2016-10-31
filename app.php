@@ -25,6 +25,15 @@ if (isset($_GET['cmd']) === true) {
        $client->set($_GET['key'],$_GET['value']);
        print('{"message": "Updated"}');
        break;
+    case 'incr':
+       $client = new Predis\Client([
+        'scheme'=> 'tcp',
+        'host'  => $host,
+        'port'  => 6379,
+       ]);
+       $client->incr($_GET['key']);
+       print('{"message": "Updated"}');
+       break;
     case 'append':
        $client = new Predis\Client([
         'scheme'=> 'tcp',
@@ -135,6 +144,7 @@ if (isset($_GET['cmd']) === true) {
        break;
     default:
        print('http://host/app.php?cmd=set&key=key1&value=val1'.PHP_EOL);
+       print('http://host/app.php?cmd=incr&key=key1'.PHP_EOL);
        print('http://host/app.php?cmd=append&key=key1&value=val1'.PHP_EOL);
        print('http://host/app.php?cmd=get&key=key1'.PHP_EOL);
        print('http://host/app.php?cmd=all'.PHP_EOL);

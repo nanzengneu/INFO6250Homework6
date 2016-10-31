@@ -13,12 +13,26 @@
 
 <body>
     <h1>Welcome to INFO6250 Chat Page, Please Sign in or Sign up here</h1>
-    <div style="width:40%; margin-left: 10%" ng-app="signupApp" ng-controller="signupCtrl">
+    <div style="width:40%; margin-left: 10%" ng-app="signupApp" ng-controller="signupCtrl" data-ng-init="hitcounter()">
         <button type="button" class="btn btn-primary" ng-click = "check()">Sign in</button>
 	<!--a href = "hw6signinpage.html"><button type="button" class = "btn btn-primary">Sign in</button></a-->
         <br>
 	<br>
         <a href = "hw6signuppage.html"><button type="button" class="btn btn-primary">Sign up</button></a>
+
+	<div style= "width: 100%;margin-top: 20%; right:0; border: 2px solid black">
+		<p>Total number of visitor of last minute is {{visitorPerLastMinute}}</p>
+	<p>Total number of visitor of current minute is {{visitorPerMinute}}</p>
+	<p>Total number of visitor of last hour is {{visitorPerLastHour}}</p>
+	<p>Total number of visitor of current hour is {{visitorPerHour}}</p>
+	<p>Total number of visitor of last Day is {{visitorPerLastDay}}</p>
+	<p>Total number of visitor of current day is {{visitorPerDay}}</p>
+	<p>Total number of visitor of current year is {{visitorPerYear}}</p>	
+	<p>Enter specific time to get visitor data follow this format(yyyy-MM-dd HH:mm): <input type="text" ng-model="visitorbytime" placeholder="yyyy-MM-dd HH:mm"></p>
+	<button type="button" class="btn btn-primary" ng-click="getvisitordata()">Get Data</button>
+	<p>Here is the number of visitors at the time you requested: {{visitorRequestByTime}}</p>
+	</div>
+
     </div>
 </body>
 
