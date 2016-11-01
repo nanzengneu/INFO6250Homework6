@@ -1,7 +1,7 @@
-# INFO6250Homework6
-INFO 6250 Homework6 Submission for Nan Zeng
+# INFO6250MiniProject
+INFO 6250 Mini Submission for Nan Zeng
 
-Please look for the files for my assignment 6 submission:
+Please look for the files for Mini Project submission:
 
 1. app.php
 2. hw6signup.html
@@ -63,4 +63,7 @@ add reids-master redis-slave after 127.0.0.1 localhost
 # Run Code in your browser
 http://your_ip/index.html
 
+# Hit Counter Function
+1. Refresh the Main Page, and watch the number of visitor changes in the below.
+2. Use the search function to enter any minute, any hour, any day, any month and any year to retrieve data for that specific time. 
 
