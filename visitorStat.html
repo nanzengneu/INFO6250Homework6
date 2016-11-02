@@ -13,7 +13,7 @@
 
 <body>
     <h1>Please go and choose the information you need.</h1>
-    <div style="width:40%; margin-left: 10%" ng-app="signupApp" ng-controller="signupCtrl">
+    <div style="width:40%; margin-left: 10%" ng-app="signupApp" ng-controller="signupCtrl" data-ng-init="hitcounter()">
 	<div style= "width: 100%;margin-top: 20%; right:0; border: 2px solid black">
 		<p>Total number of visitor of last minute is {{visitorPerLastMinute}}</p>
 	 	<p>Total number of visitor of current minute is {{visitorPerMinute}}</p>
