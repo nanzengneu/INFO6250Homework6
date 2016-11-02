@@ -119,64 +119,41 @@ angMod.controller('signupCtrl', function ($scope, $filter, $http, $cookieStore) 
 }
 
 
-	/*signup function*/	
-	$scope.signup = function(){
-
 	
-	angular.forEach($scope.info, function(value,key){
-
-            $http.get("app.php?cmd=set&key="+key+"&value="+ value)
-            .success(function ( ) {
-                $scope.redisResponse = "Updated.";
-		location.href = "hw6signinpage.html";
-            });
-            
-        });
-        
-	    
-    }
 
 
 	/*signup function*/	
-	$scope.signup = function(){
+	$scope.signup = function() {
+		$http.get("app.php?cmd=set&key=" + $scope.info.username + "&value=" + $scope.info.password)
+		     	.success(function() {
+				$scope.redisReponse = "Updated.";
+				location.href = "hw6signinpage.html";
+			});
 
-	
-	angular.forEach($scope.info, function(value,key){
-
-            $http.get("app.php?cmd=set&key="+key+"&value="+ value)
-            .success(function ( ) {
-                $scope.redisResponse = "Updated.";
-		location.href = "hw6signinpage.html";
-            });
-            
-        });
-        
-	    
-    }
-/*signin function*/
-	$scope.signin = function() {
-           $http.get("app.php?cmd=get&key=username")
-	     	.success(function (data_username) {
-		    if(data_username.data == $scope.logininfo.username){
-			$http.get("app.php?cmd=get&key=password")
-			.success(function (data_password) {
-				if(data_password.data == $scope.logininfo.password){
-					$cookieStore.put("username", $scope.logininfo.username);
-					$cookieStore.put("password", $scope.logininfo.password);
-
-					location.href = "http://www.info6250.com";
-					}
-					else{
-					     alert("You have invaild password, please try again!");
-					     $scope.logininfo.password = "";
-					}
-				})	
-			}
-			else{
-			    alert("There is no username matched record, please check your username");
-			}
-		}); 
 	}
 
 
+
+/*signin function*/
+	$scope.signin = function() {
+           $http.get("app.php?cmd=get&key="+$scope.logininfo.username)
+	     	.success(function (data) {
+		    if(data.data == ""){
+		    	alert("There is no username matched record, please check your username");
+		    } else {
+		    	if(data.data == $scope.logininfo.password){
+					$cookieStore.put("username", $scope.logininfo.username);
+					$cookieStore.put("password", $scope.logininfo.password);
+					location.href = "http://www.info6250.com";
+					} else {
+					     alert("You have invaild password, please try again!");
+					     $scope.logininfo.password = "";
+					}
+			}
+			
+		}); 
+	
+}
+
 });
+
